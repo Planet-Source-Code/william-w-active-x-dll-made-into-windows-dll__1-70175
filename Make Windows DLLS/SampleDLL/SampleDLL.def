@@ -1,0 +1,9 @@
+Name MathLib
+LIBRARY SampleDLL
+EXPORTS
+    DllMain @1
+    Increment @2
+    Decrement @3
+    Test @4
+    Square @5
+    GetInfo @6

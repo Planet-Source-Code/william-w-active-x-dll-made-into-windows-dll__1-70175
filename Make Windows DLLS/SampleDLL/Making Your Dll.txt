@@ -1,0 +1,93 @@
+Start by making an Active X Dll
+
+don't put any code in Class1.cls instead add an Module to the project
+
+this is where our code will be located
+
+add this to your .bas module
+
+--------------------------------------------------------
+Option Explicit
+Public Const DLL_PROCESS_DETACH = 0
+Public Const DLL_PROCESS_ATTACH = 1
+Public Const DLL_THREAD_ATTACH = 2
+Public Const DLL_THREAD_DETACH = 3
+
+Public Function DllMain(hInst As Long, fdwReason As Long, lpvReserved As Long) As Boolean
+   Select Case fdwReason
+      Case DLL_PROCESS_DETACH
+         ' No per-process cleanup needed
+      Case DLL_PROCESS_ATTACH
+         DllMain = True
+      Case DLL_THREAD_ATTACH
+         ' No per-thread initialization needed
+      Case DLL_THREAD_DETACH
+         ' No per-thread cleanup needed
+   End Select
+End Function
+
+
+'then make your other functions here we are using the ones supplied in the sample dll
+
+
+Public Function Increment(var As Integer) As Integer
+   If Not IsNumeric(var) Then Err.Raise 5
+   
+   Increment = var + 1
+End Function
+
+Public Function Decrement(var As Integer) As Integer
+   If Not IsNumeric(var) Then Err.Raise 5
+   
+   Decrement = var - 1
+End Function
+
+Public Function Square(var As Long) As Long
+   If Not IsNumeric(var) Then Err.Raise 5
+   
+   Square = var ^ 2
+End Function
+
+--------------------------------------------------------
+
+After you save make a new .def file in the samples case its MathLib.Def
+
+Place the following text into the .def file:
+--------------------------------------------------------
+NAME MathLib
+LIBRARY MathMod
+DESCRIPTION "Add-on Library of Mathematical Routines"
+EXPORTS DllMain @1
+        Increment @2
+        Decrement @3
+        Square @4
+--------------------------------------------------------
+
+Now Notice the Numbers after the @ sign this is the physical location of the functions 
+
+in the Module So, If we added another function (Test) between increment and decrement 
+
+our file would look like this:
+
+NAME MathLib
+LIBRARY MathMod
+DESCRIPTION "Add-on Library of Mathematical Routines"
+EXPORTS DllMain @1
+        Increment @2
+        Test @3
+        Decrement @4
+        Square @5
+
+thats it save the def file to the project directory and after making the new Link.exe
+ 
+Make the project choose Yes (make a windows Dll)
+
+and when its done you now have a Genuine Windows Dll (see Readme.txt Notes:)
+
+ps. you may also want to set compability to binary 
+
+
+
+
+
+ 

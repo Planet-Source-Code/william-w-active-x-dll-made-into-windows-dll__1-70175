@@ -1,0 +1,21 @@
+Orig Author http://www.Planet-Source-Code.com/vb/scripts/ShowCode.asp?txtCodeId=54190&lngWId=1
+DanSoft Australia - http://dansoftaus.r8.org/
+
+
+parts of the addin code were a dll maker though much more complicated (and less developed)
+than this version 
+I just tweaked it and added my own code to make a .def file maker add-in
+
+but I'll Still give some credit as this was my starting point
+
+simply compile this add in to the VB98 Directory (usually C:\Program Files\Microsoft Visual Studio\VB98\)
+Restart VB and it will be under add-ins
+
+you don't have to have this Add-In but it makes the .def files for you
+
+And now makes a declare helper text doc listing function/sub input/output params
+---------------------------------------->
+NOTE: you need to save your project first and have a make name to use the make declare helper properly
+---------------------------------------->
+oh Btw for some reason vb-ide crashes when you close an add-in project?
+?? but its not a big deal it doesn't do it on any other project
