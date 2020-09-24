@@ -1,0 +1,17 @@
+Declare Helper File
+Name MathLib
+LIBRARY SampleDLL
+
+
+Public Declare Function DllMain Lib "MathLib.dll" (hInst As Long, fdwReason As Long, lpvReserved As Long) As Boolean
+
+Public Declare Function Increment Lib "MathLib.dll" (var As Integer) As Integer
+
+Public Declare Function Decrement Lib "MathLib.dll" (var As Integer) As Integer
+
+Public Declare Function Test Lib "MathLib.dll" (ByVal hwnd As Long) As Long
+
+Public Declare Function Square Lib "MathLib.dll" (var As Long) As Long
+
+Public Declare Function GetInfo Lib "MathLib.dll" (Str As String) As String
+
